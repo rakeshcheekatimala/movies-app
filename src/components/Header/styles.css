@@ -1,0 +1,21 @@
+.app-header {
+	background-color: #1976d2;
+	height: 80px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.login-button {
+	margin-right:1rem;
+}
+
+.app-logo {
+	height: 2.5rem;
+	margin-left:1rem;
+
+}
+
+@keyframes app-logo-spin {
+	from { transform: scaleX(-1); }
+}
