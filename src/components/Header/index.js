@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
-import { Button, Tabs, Tab, Typography, FormControl, InputLabel, Input } from '@material-ui/core';
-import logo from './../../assets/logo.svg';
+import { Button, Tabs, Tab, Typography } from '@material-ui/core';
 import Modal from 'react-modal';
+import PropTypes from 'prop-types';
+import logo from './../../assets/logo.svg';
+import LoginFrom from './../LoginForm';
+import RegistrationForm from './../RegistrationForm';
+
 import './styles.css';
 
 function a11yProps(index) {
@@ -28,7 +32,12 @@ const TabContainer = (props) => {
 			{props.children}
 		</Typography>
 	)
+};
+
+TabContainer.propTypes = {
+	children: PropTypes.node.isRequired
 }
+
 const Header = () => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [value, setValue] = React.useState(0);
@@ -63,17 +72,7 @@ const Header = () => {
 					<Tab label="Register" {...a11yProps(1)} />
 				</Tabs>
 				<TabContainer>
-					<FormControl required>
-						<InputLabel htmlFor="username">Username</InputLabel>
-						<Input type="text" name="username" id="username" />
-					</FormControl>
-					<br /><br />
-					<FormControl required>
-						<InputLabel htmlFor="password">Password</InputLabel>
-						<Input type="password" name="password" id="password" />
-					</FormControl>
-					<br /><br />
-					<Button variant="contained" color="secondary" type="submit">Submit</Button>
+					{value === 0 ? <LoginFrom /> : <RegistrationForm />}
 				</TabContainer>
 			</Modal >
 		</div >
