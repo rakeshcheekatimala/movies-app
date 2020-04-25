@@ -18,3 +18,11 @@
 @keyframes app-logo-spin {
 	from { transform: scaleX(-1); }
 }
+
+.reset__padding {
+	padding: 0;
+	text-align: center;
+}
+.tabs {
+	margin-bottom: 1.5rem;
+}
