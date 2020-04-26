@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import logo from './../../assets/logo.svg';
 import LoginFrom from './../LoginForm';
 import RegistrationForm from './../RegistrationForm';
+import Banner from './../Banner';
 
 import './styles.css';
 
@@ -66,6 +67,7 @@ const Header = () => {
             </Button>
 				</div>
 			</header>
+			<Banner info="Upcoming Movies" />
 			<Modal ariaHideApp={false} isOpen={isOpen} contentLabel="Login" onRequestClose={closeModal} style={customStyles}>
 				<Tabs value={value} onChange={handleChange} aria-label="Login Tabs" className="tabs">
 					<Tab label="Login" {...a11yProps(0)} />
