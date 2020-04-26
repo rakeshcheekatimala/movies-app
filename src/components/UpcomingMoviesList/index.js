@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './styles.scss';
 import { withStyles } from '@material-ui/core/styles';
 import moviesData from './movies.json';
-import { GridList, GridListTile, GridListTileBar, CardContent, Card, FormControl, Typography, InputLabel, Input, Select, Checkbox, ListItemText, MenuItem } from '@material-ui/core';
+import { GridList, GridListTile, GridListTileBar, CardContent, Card, FormControl, Typography, InputLabel, Input, Select, Checkbox, ListItemText, MenuItem, TextField, Button } from '@material-ui/core';
 import genres from './genres';
 import artists from './artists';
 const styles = theme => ({
@@ -130,11 +130,23 @@ class Home extends Component {
 										))}
 									</Select>
 								</FormControl>
+								<FormControl className={classes.formControl}>
+									<TextField type="date" id="releaseDate" label="Release Date Start" defaultValue="" InputLabelProps={{ shrink: true }} />
+								</FormControl>
+								<FormControl className={classes.formControl}>
+									<TextField type="date" id="releaseDate" label="Release Date End" defaultValue="" InputLabelProps={{ shrink: true }} />
+								</FormControl>
+								<br />
+								<FormControl className={classes.formControl}>
+									<Button variant="contained" color="secondary" >
+										Apply
+          			</Button>
+								</FormControl>
 							</CardContent>
 						</Card>
 					</div>
 				</div>
-			</div>
+			</div >
 		)
 	}
 }
