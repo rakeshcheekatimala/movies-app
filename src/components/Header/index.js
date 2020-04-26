@@ -64,7 +64,7 @@ const Header = () => {
 				<div className='login-button'>
 					<Button variant="contained" color="secondary" onClick={showModal}>
 						Login
-            </Button>
+          </Button>
 				</div>
 			</header>
 			<Banner info="Upcoming Movies" />
