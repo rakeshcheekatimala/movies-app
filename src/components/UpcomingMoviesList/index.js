@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
-import './styles.scss';
+import ReactDOM from 'react-dom';
 import { withStyles } from '@material-ui/core/styles';
 import moviesData from './movies.json';
 import { GridList, GridListTile, GridListTileBar, CardContent, Card, FormControl, Typography, InputLabel, Input, Select, Checkbox, ListItemText, MenuItem, TextField, Button } from '@material-ui/core';
 import genres from './genres';
 import artists from './artists';
+import './styles.scss';
+import Details from './../../pages/details';
+
 const styles = theme => ({
 	root: {
 		flexGrow: 1,
@@ -21,7 +24,7 @@ const styles = theme => ({
 		cursor: 'pointer'
 	},
 	formControl: {
-		margin: theme.spacing.unit,
+		margin: '16px',
 		minWidth: 240,
 		maxWidth: 240
 	}
@@ -51,6 +54,11 @@ class Home extends Component {
 		this.setState({ artists: event.target.value });
 	}
 
+	movieClickHandler = (movieId) => {
+		console.log('movieId', movieId);
+		ReactDOM.render(<Details movieId={movieId} />, document.getElementById('root'));
+	}
+
 	render() {
 		const { classes } = this.props;
 		return (
@@ -71,6 +79,7 @@ class Home extends Component {
 									<img src={movie.poster_url} className="movie-poster" alt={movie.title} />
 									<GridListTileBar
 										title={movie.title}
+										onClick={() => this.movieClickHandler(movie.id)}
 										subtitle={<span>Release Date: {new Date(movie.release_date).toDateString()}</span>}
 									/>
 								</GridListTile>

@@ -1,5 +1,5 @@
 .app-header {
-	background-color: #1976d2;
+	background-color: #333;
 	height: 80px;
 	display: flex;
 	justify-content: space-between;
@@ -11,8 +11,12 @@
 }
 
 .app-logo {
-	height: 2.5rem;
+	height: 3rem;
+	width: 3rem;
 	margin-left:1rem;
+	background-color: #f50057;
+	-webkit-mask-image:url(./../../assets/logo.svg);
+	-webkit-mask-size:cover;
 }
 
 @keyframes app-logo-spin {

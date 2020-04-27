@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Button, Tabs, Tab, Typography } from '@material-ui/core';
 import Modal from 'react-modal';
 import PropTypes from 'prop-types';
-import logo from './../../assets/logo.svg';
 import LoginFrom from './../LoginForm';
 import RegistrationForm from './../RegistrationForm';
 import Banner from './../Banner';
@@ -39,7 +38,7 @@ TabContainer.propTypes = {
 	children: PropTypes.node.isRequired
 }
 
-const Header = () => {
+const Header = (props) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [value, setValue] = React.useState(0);
 
@@ -60,14 +59,14 @@ const Header = () => {
 	return (
 		<div >
 			<header className="app-header">
-				<img src={logo} className="app-logo" alt="logo" />
+				<div className="app-logo" >&nbsp;</div>
 				<div className='login-button'>
 					<Button variant="contained" color="secondary" onClick={showModal}>
 						Login
           </Button>
 				</div>
 			</header>
-			<Banner info="Upcoming Movies" />
+			{props.showBanner ? <Banner info="Upcoming Movies" /> : null}
 			<Modal ariaHideApp={false} isOpen={isOpen} contentLabel="Login" onRequestClose={closeModal} style={customStyles}>
 				<Tabs value={value} onChange={handleChange} aria-label="Login Tabs" className="tabs">
 					<Tab label="Login" {...a11yProps(0)} />
