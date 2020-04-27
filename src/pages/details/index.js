@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Youtube from 'react-youtube';
 import moviesData from './../../components/UpcomingMoviesList/movies.json';
 import Header from './../../components/Header';
-import Typography from '@material-ui/core/Typography';
+import { Typography, GridList, GridListTile, GridListTileBar } from '@material-ui/core';
 import './styles.css';
 
 class Details extends Component {
@@ -20,6 +20,11 @@ class Details extends Component {
 		})[0];
 		this.setState({ currentState });
 	}
+
+	artistClickHandler = (url) => {
+		window.open(url, '_blank');
+	}
+
 	onReady(event) {
 		// access to player in all event handlers via event.target
 		event.target.pauseVideo();
@@ -69,7 +74,27 @@ class Details extends Component {
 						</div>
 					</div>
 					<div className="rightDetails">
+						<div className="bold marginBottom16 marginTop16">
+							<Typography>
+								<span className="bold">Artists:</span>
+							</Typography>
+							<div className="paddingRight">
+								<GridList cellHeight={160} cols={2}>
+									{movie.artists != null && movie.artists.map(artist => (
+										<GridListTile
+											className="gridTile"
+											onClick={() => this.artistClickHandler(artist.wiki_url)}
+											key={artist.id}>
+											<img src={artist.profile_url} alt={artist.first_name + " " + artist.last_name} />
+											<GridListTileBar
+												title={artist.first_name + " " + artist.last_name}
+											/>
+										</GridListTile>
 
+									))}
+								</GridList>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
