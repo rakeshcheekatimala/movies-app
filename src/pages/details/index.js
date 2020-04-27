@@ -3,13 +3,17 @@ import Youtube from 'react-youtube';
 import moviesData from './../../components/UpcomingMoviesList/movies.json';
 import Header from './../../components/Header';
 import { Typography, GridList, GridListTile, GridListTileBar } from '@material-ui/core';
+import StarIcon from '@material-ui/icons/Star';
+import starIcons from './staricons';
 import './styles.css';
+import { PINK, BLACK } from './../../styles/colors';
 
 class Details extends Component {
 	constructor() {
 		super();
 		this.state = {
-			movie: {}
+			movie: {},
+			starIcons
 		}
 	}
 
@@ -28,6 +32,21 @@ class Details extends Component {
 	onReady(event) {
 		// access to player in all event handlers via event.target
 		event.target.pauseVideo();
+	}
+	startClickHander(id) {
+		let starIconList = [];
+		for (let star of this.state.starIcons) {
+			let starNode = star;
+			if (star.id <= id) {
+				starNode.color = PINK;
+			}
+			else {
+				starNode.color = BLACK;
+
+			}
+			starIconList.push(starNode);
+		}
+		this.setState({ starIcons: starIconList });
 	}
 	render() {
 		let movie = this.state.movie;
@@ -74,10 +93,17 @@ class Details extends Component {
 						</div>
 					</div>
 					<div className="rightDetails">
+						<Typography><span className="bold">Rate this movie:</span></Typography>
 						<div className="bold marginBottom16 marginTop16">
 							<Typography>
 								<span className="bold">Artists:</span>
 							</Typography>
+							{
+								starIcons.map((star) => {
+									return <StarIcon className="material-icons" style={{ fill: star.color }} value={star.value} key={`star__` + star.id} onClick={this.startClickHander.bind(this, star.id)} />
+								})
+							}
+							<br /><br />
 							<div className="paddingRight">
 								<GridList cellHeight={160} cols={2}>
 									{movie.artists != null && movie.artists.map(artist => (
