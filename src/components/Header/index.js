@@ -5,7 +5,8 @@ import PropTypes from 'prop-types';
 import LoginFrom from './../LoginForm';
 import RegistrationForm from './../RegistrationForm';
 import Banner from './../Banner';
-
+import ReactDOM from 'react-dom';
+import BookShow from './../../pages/bookshow';
 import './styles.css';
 
 function a11yProps(index) {
@@ -55,6 +56,9 @@ const Header = (props) => {
 		e.preventDefault();
 		setIsOpen(false);
 	}
+	const bookShowHandler = (e) => {
+		ReactDOM.render(<BookShow />, document.getElementById('root'));
+	}
 
 	return (
 		<div >
@@ -64,6 +68,9 @@ const Header = (props) => {
 					<Button variant="contained" color="secondary" onClick={showModal}>
 						Login
           </Button>
+					{props.bookShow ? (<Button variant="contained" color="secondary" onClick={bookShowHandler} className="ml-16">
+						BookShow
+					</Button>) : null}
 				</div>
 			</header>
 			{props.showBanner ? <Banner info="Upcoming Movies" /> : null}

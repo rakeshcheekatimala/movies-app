@@ -60,7 +60,7 @@ class Details extends Component {
 
 		return (
 			<div className="details">
-				<Header />
+				<Header bookShow={true} />
 				<div className="flex-containerDetails">
 					<div className="leftDetails">
 						<img src={movie.poster_url} alt={movie.title} />
